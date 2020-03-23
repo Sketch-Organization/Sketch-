@@ -1,0 +1,2 @@
+# Sketch-
+Sketch! is a virtual drawing application that provides users with the ability to create and host online drawing boards. These drawing boards can be drawn on, designed on, and manipulated by multiple users simultaneously, allowing for a wide variety of functionality. This application shall be created using the Godot game engine, and will be coded in GDScript. Sketch’s multi-user features will be supported using the client-server model (client-server architecture) and RPC protocols.
