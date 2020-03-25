@@ -1,10 +1,11 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://sketchbutton.PNG" type="Texture" id=1]
 [ext_resource path="res://BerlinRounded-Bold.otf" type="DynamicFontData" id=2]
 [ext_resource path="res://Little days.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://diamond-eyes.png" type="Texture" id=4]
 [ext_resource path="res://paperairplane.png" type="Texture" id=5]
+[ext_resource path="res://notebookbackground.png" type="Texture" id=6]
 [ext_resource path="res://HostPopup.gd" type="Script" id=7]
 [ext_resource path="res://Title.gd" type="Script" id=8]
 [ext_resource path="res://onhover.PNG" type="Texture" id=9]
@@ -28,15 +29,29 @@ outline_size = 3
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 2 )
 
+[sub_resource type="DynamicFont" id=5]
+size = 30
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 2 )
+
 [sub_resource type="DynamicFont" id=4]
 size = 48
 outline_size = 2
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 2 )
 
+[sub_resource type="DynamicFont" id=6]
+size = 30
+outline_size = 2
+outline_color = Color( 0.0352941, 0, 0, 1 )
+font_data = ExtResource( 2 )
+
 [node name="MainTitleControl" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 1.0
+margin_right = 1.0
 mouse_filter = 1
 script = ExtResource( 8 )
 __meta__ = {
@@ -191,6 +206,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="ColorRect" type="ColorRect" parent="HostPopup"]
+margin_right = 598.0
+margin_bottom = 427.0
+color = Color( 0.964706, 0.945098, 0.866667, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Form" type="Control" parent="HostPopup"]
 anchor_left = 0.5
 anchor_right = 0.5
@@ -203,27 +226,35 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="LineEdit" type="LineEdit" parent="HostPopup/Form"]
+[node name="Label" type="Label" parent="HostPopup/Form"]
 anchor_left = 0.5
-anchor_top = 1.0
+anchor_top = 0.3
 anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -107.5
-margin_top = -39.0
-margin_right = 107.5
-mouse_default_cursor_shape = 0
+anchor_bottom = 0.3
+margin_left = -188.5
+margin_top = -25.0
+margin_right = 188.5
+margin_bottom = 12.0
+mouse_filter = 1
+custom_fonts/font = SubResource( 5 )
+text = "Board Name:"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="HostPopup/Form"]
-anchor_right = 1.0
-margin_top = 8.0
-margin_bottom = 22.0
-mouse_filter = 1
-text = "Board Name:"
+[node name="LineEdit" type="LineEdit" parent="HostPopup/Form"]
+anchor_left = 0.5
+anchor_top = 0.721
+anchor_right = 0.5
+anchor_bottom = 0.721
+margin_left = -107.5
+margin_top = -19.47
+margin_right = 107.5
+margin_bottom = 19.53
+mouse_default_cursor_shape = 0
 align = 1
+max_length = 20
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -233,12 +264,14 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -281.0
-margin_top = -105.0
+margin_left = -584.0
+margin_top = -409.0
+margin_right = -508.0
+margin_bottom = -354.0
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource( 1 )
 texture_pressed = ExtResource( 10 )
-texture_hover = ExtResource( 9 )
+expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -248,13 +281,14 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -62.5
-margin_top = -29.5
-margin_right = 62.5
-margin_bottom = 29.5
+margin_left = -21.5
+margin_top = -31.5
+margin_right = 103.5
+margin_bottom = 27.5
 mouse_filter = 1
 custom_fonts/font = SubResource( 4 )
-text = "Close"
+text = "X"
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -262,8 +296,10 @@ __meta__ = {
 [node name="CreateButton" type="TextureButton" parent="HostPopup"]
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_top = -105.0
-margin_right = 281.0
+margin_left = 30.8892
+margin_top = -128.269
+margin_right = 311.889
+margin_bottom = -23.2687
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource( 1 )
 texture_pressed = ExtResource( 10 )
@@ -288,6 +324,40 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="TextureButton" type="TextureButton" parent="HostPopup"]
+margin_left = 296.0
+margin_top = 300.0
+margin_right = 577.0
+margin_bottom = 405.0
+texture_normal = ExtResource( 1 )
+texture_pressed = ExtResource( 10 )
+texture_hover = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="HostPopup/TextureButton"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -77.5
+margin_top = -29.5
+margin_right = 77.5
+margin_bottom = 29.5
+mouse_filter = 1
+custom_fonts/font = SubResource( 4 )
+text = "Find"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NotebookBackgroun" type="Sprite" parent="HostPopup"]
+position = Vector2( 289.625, 216.208 )
+scale = Vector2( 1.73712, 0.746335 )
+texture = ExtResource( 6 )
+
 [node name="JoinPopup" type="PopupMenu" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
@@ -302,6 +372,14 @@ popup_exclusive = true
 hide_on_item_selection = false
 hide_on_checkable_item_selection = false
 script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect2" type="ColorRect" parent="JoinPopup"]
+margin_right = 598.0
+margin_bottom = 427.0
+color = Color( 0.964706, 0.945098, 0.866667, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -334,9 +412,10 @@ __meta__ = {
 
 [node name="Label" type="Label" parent="JoinPopup/Form"]
 anchor_right = 1.0
-margin_top = 8.0
-margin_bottom = 22.0
+margin_top = -4.0
+margin_bottom = 33.0
 mouse_filter = 1
+custom_fonts/font = SubResource( 6 )
 text = "IP Address:"
 align = 1
 __meta__ = {
@@ -348,12 +427,14 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -281.0
-margin_top = -105.0
+margin_left = -584.0
+margin_top = -409.0
+margin_right = -508.0
+margin_bottom = -354.0
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource( 1 )
 texture_pressed = ExtResource( 10 )
-texture_hover = ExtResource( 9 )
+expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -363,13 +444,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -62.5
-margin_top = -29.5
-margin_right = 62.5
-margin_bottom = 29.5
+margin_left = -19.5
+margin_top = -30.5
+margin_right = 105.5
+margin_bottom = 28.5
 mouse_filter = 1
 custom_fonts/font = SubResource( 4 )
-text = "Close"
+text = "X"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -377,8 +458,10 @@ __meta__ = {
 [node name="JoinBoardButton" type="TextureButton" parent="JoinPopup"]
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_top = -105.0
-margin_right = 281.0
+margin_left = 155.0
+margin_top = -215.0
+margin_right = 436.0
+margin_bottom = -110.0
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource( 1 )
 texture_pressed = ExtResource( 10 )
@@ -403,6 +486,11 @@ align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="NotebookBackgroun2" type="Sprite" parent="JoinPopup"]
+position = Vector2( 289.625, 216.208 )
+scale = Vector2( 1.73712, 0.746335 )
+texture = ExtResource( 6 )
 [connection signal="pressed" from="Buttons/HostButton" to="." method="_on_HostButton_pressed"]
 [connection signal="pressed" from="Buttons/JoinButton" to="." method="_on_JoinButton_pressed"]
 [connection signal="pressed" from="HostPopup/CloseButton" to="." method="_on_CloseButton_pressed"]

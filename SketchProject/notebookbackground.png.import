@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/sketchbutton2.PNG-905584752c041a368cd7740c4322ecc2.stex"
+path="res://.import/notebookbackground.png-a5fe523c6bb542d00eae61af0fc71433.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sketchbutton2.PNG"
-dest_files=[ "res://.import/sketchbutton2.PNG-905584752c041a368cd7740c4322ecc2.stex" ]
+source_file="res://notebookbackground.png"
+dest_files=[ "res://.import/notebookbackground.png-a5fe523c6bb542d00eae61af0fc71433.stex" ]
 
 [params]
 
