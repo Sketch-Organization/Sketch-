@@ -1,13 +1,14 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://sketchbutton.PNG" type="Texture" id=1]
 [ext_resource path="res://BerlinRounded-Bold.otf" type="DynamicFontData" id=2]
 [ext_resource path="res://Little days.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://diamond-eyes.png" type="Texture" id=4]
 [ext_resource path="res://paperairplane.png" type="Texture" id=5]
-[ext_resource path="res://icon.png" type="Texture" id=6]
 [ext_resource path="res://HostPopup.gd" type="Script" id=7]
 [ext_resource path="res://Title.gd" type="Script" id=8]
+[ext_resource path="res://onhover.PNG" type="Texture" id=9]
+[ext_resource path="res://onclick.PNG" type="Texture" id=10]
 
 [sub_resource type="DynamicFont" id=1]
 size = 150
@@ -54,11 +55,6 @@ expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="paperairplane" type="Sprite" parent="Background"]
-position = Vector2( 790.28, 402.034 )
-scale = Vector2( 0.186837, 0.170607 )
-texture = ExtResource( 5 )
 
 [node name="TitleLabel" type="Label" parent="."]
 anchor_left = 0.5
@@ -117,7 +113,8 @@ margin_right = 140.5
 margin_bottom = 52.479
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource( 1 )
-texture_pressed = ExtResource( 6 )
+texture_pressed = ExtResource( 10 )
+texture_hover = ExtResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -149,7 +146,8 @@ margin_right = 140.88
 margin_bottom = 52.479
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource( 1 )
-texture_pressed = ExtResource( 6 )
+texture_pressed = ExtResource( 10 )
+texture_hover = ExtResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -169,6 +167,11 @@ text = "Join"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="paperairplane" type="Sprite" parent="Buttons"]
+position = Vector2( 791.782, 101.074 )
+scale = Vector2( 0.186837, 0.170607 )
+texture = ExtResource( 5 )
 
 [node name="HostPopup" type="PopupMenu" parent="."]
 anchor_left = 0.5
@@ -234,7 +237,8 @@ margin_left = -281.0
 margin_top = -105.0
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource( 1 )
-texture_pressed = ExtResource( 6 )
+texture_pressed = ExtResource( 10 )
+texture_hover = ExtResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -262,7 +266,8 @@ margin_top = -105.0
 margin_right = 281.0
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource( 1 )
-texture_pressed = ExtResource( 6 )
+texture_pressed = ExtResource( 10 )
+texture_hover = ExtResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -347,7 +352,8 @@ margin_left = -281.0
 margin_top = -105.0
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource( 1 )
-texture_pressed = ExtResource( 6 )
+texture_pressed = ExtResource( 10 )
+texture_hover = ExtResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -375,7 +381,8 @@ margin_top = -105.0
 margin_right = 281.0
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource( 1 )
-texture_pressed = ExtResource( 6 )
+texture_pressed = ExtResource( 10 )
+texture_hover = ExtResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
