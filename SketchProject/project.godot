@@ -16,8 +16,10 @@ _global_script_class_icons={
 [application]
 
 config/name="Sketch Project"
+run/main_scene="res://Title.tscn"
 config/icon="res://icon.png"
 
 [rendering]
 
+environment/default_clear_color=Color( 1, 1, 1, 1 )
 environment/default_environment="res://default_env.tres"
