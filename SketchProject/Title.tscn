@@ -29,13 +29,13 @@ outline_size = 3
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 2 )
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=4]
 size = 30
 outline_size = 2
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 2 )
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=5]
 size = 48
 outline_size = 2
 outline_color = Color( 0, 0, 0, 1 )
@@ -236,7 +236,7 @@ margin_top = -25.0
 margin_right = 188.5
 margin_bottom = 12.0
 mouse_filter = 1
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 4 )
 text = "Board Name:"
 align = 1
 __meta__ = {
@@ -286,7 +286,7 @@ margin_top = -31.5
 margin_right = 103.5
 margin_bottom = 27.5
 mouse_filter = 1
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
 text = "X"
 valign = 1
 __meta__ = {
@@ -318,7 +318,7 @@ margin_top = -29.5
 margin_right = 77.5
 margin_bottom = 29.5
 mouse_filter = 1
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
 text = "Create"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -346,7 +346,7 @@ margin_top = -29.5
 margin_right = 77.5
 margin_bottom = 29.5
 mouse_filter = 1
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
 text = "Find"
 align = 1
 __meta__ = {
@@ -449,7 +449,7 @@ margin_top = -30.5
 margin_right = 105.5
 margin_bottom = 28.5
 mouse_filter = 1
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
 text = "X"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -480,7 +480,7 @@ margin_top = -29.5
 margin_right = 77.5
 margin_bottom = 29.5
 mouse_filter = 1
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
 text = "Join"
 align = 1
 __meta__ = {
