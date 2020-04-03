@@ -2,6 +2,7 @@ extends Control
 
 var hostPopupMenu
 var joinPopupMenu
+var fileOpenner
 var scene_path_to_load
 
 # Declare member variables here. Examples:
@@ -13,6 +14,7 @@ var scene_path_to_load
 func _ready():
 	hostPopupMenu = get_node("HostPopup")
 	joinPopupMenu = get_node("JoinPopup")
+	fileOpenner = get_node("FileDialog")
 	pass # Replace with function body.
 
 func _on_Button_pressed(scene_to_load):
@@ -40,6 +42,9 @@ func _on_CreateButton_pressed():
 	_on_Button_pressed("res://DrawingBoard.tscn")
 	pass # Replace with function body.
 
-
 func _on_JoinBoardButton_pressed():
+	pass # Replace with function body.
+
+func _on_LoadButton_pressed():
+	fileOpenner.show()
 	pass # Replace with function body.
