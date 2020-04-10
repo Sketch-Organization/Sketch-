@@ -19,6 +19,14 @@ func _process(delta):
 			line.width = currentWidth
 			add_child(line)
 			
+func undoLine():
+	pass
+	
+func clearBoard():
+	for child in get_children():
+		child.queue_free()
+	pass
+	
 func setColor(newColor):
 	currentColor = newColor
 	pass

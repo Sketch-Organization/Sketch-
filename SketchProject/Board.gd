@@ -36,3 +36,11 @@ func stopDrawing():
 
 func resumeDrawing():
 	sav = false
+
+func clearEverything():
+	canvas.clearBoard()
+	pass
+
+func _on_ClearButton_button_up():
+	clearEverything();
+	pass # Replace with function body.
