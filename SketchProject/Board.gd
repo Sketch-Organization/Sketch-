@@ -41,6 +41,14 @@ func clearEverything():
 	canvas.clearBoard()
 	pass
 
+func undoALine():
+	canvas.undoLine()
+	pass
+
 func _on_ClearButton_button_up():
-	clearEverything();
+	clearEverything()
+	pass # Replace with function body.
+
+func _on_UndoButton_button_up():
+	undoALine()
 	pass # Replace with function body.

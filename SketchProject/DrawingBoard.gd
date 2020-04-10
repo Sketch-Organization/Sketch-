@@ -69,3 +69,11 @@ func _on_FileDialog_custom_action(action):
 		fileSaver.hide()
 		board.resumeDrawing()
 	pass # Replace with function body.
+
+func _on_VBoxContainer2_mouse_entered():
+	board.stopDrawing()
+	pass # Replace with function body.
+
+func _on_VBoxContainer2_mouse_exited():
+	board.resumeDrawing()
+	pass # Replace with function body.

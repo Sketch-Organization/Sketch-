@@ -4,6 +4,7 @@ onready var newLine = load("res://Line.tscn")
 var currentColor
 var currentWidth
 var parent
+var Lines = []
 
 func _ready():
 	parent = get_parent().get_parent().get_parent()
@@ -18,8 +19,12 @@ func _process(delta):
 			line.default_color = currentColor
 			line.width = currentWidth
 			add_child(line)
+			Lines.append(line.name)
+			#print(line.name)
 			
 func undoLine():
+	get_node(Lines.back()).queue_free()
+	Lines.pop_back()
 	pass
 	
 func clearBoard():
