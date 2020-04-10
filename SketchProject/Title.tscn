@@ -502,6 +502,7 @@ window_title = "Open a File"
 resizable = true
 mode = 0
 access = 2
+filters = PoolStringArray( "*.png" )
 current_dir = "C:/Users/erics/Desktop/Sketch-/SketchProject"
 current_path = "C:/Users/erics/Desktop/Sketch-/SketchProject/"
 __meta__ = {
