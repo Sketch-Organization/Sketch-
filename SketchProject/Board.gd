@@ -45,10 +45,6 @@ func undoALine():
 	canvas.undoLine()
 	pass
 
-func _on_ClearButton_button_up():
-	clearEverything()
-	pass # Replace with function body.
-
-func _on_UndoButton_button_up():
-	undoALine()
-	pass # Replace with function body.
+func eraseALine():
+	canvas.eraseLine()
+	pass

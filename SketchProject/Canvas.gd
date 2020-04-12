@@ -5,6 +5,7 @@ var currentColor
 var currentWidth
 var parent
 var Lines = []
+var eraser = false
 
 func _ready():
 	parent = get_parent().get_parent().get_parent()
@@ -14,17 +15,24 @@ func _ready():
 	
 func _process(delta):
 	if Input.is_action_just_pressed("LeftClick"):
-		var line = newLine.instance()
 		if(parent.sav == false):
+			var line = newLine.instance()
 			line.default_color = currentColor
 			line.width = currentWidth
 			add_child(line)
 			Lines.append(line.name)
 			#print(line.name)
-			
+		if(eraser == true):
+			eraseLine()
+			 
 func undoLine():
 	get_node(Lines.back()).queue_free()
 	Lines.pop_back()
+	pass
+
+func eraseLine():
+		#return the name of the pressed line
+		#remove_child(line)
 	pass
 	
 func clearBoard():

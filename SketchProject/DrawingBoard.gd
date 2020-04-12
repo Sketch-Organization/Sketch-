@@ -77,3 +77,15 @@ func _on_VBoxContainer2_mouse_entered():
 func _on_VBoxContainer2_mouse_exited():
 	board.resumeDrawing()
 	pass # Replace with function body.
+
+func _on_EraserButton_toggled(button_pressed):
+	board.stopDrawing()
+	pass # Replace with function body.
+	
+func _on_ClearButton_button_up():
+	board.clearEverything()
+	pass # Replace with function body.
+
+func _on_UndoButton_button_up():
+	board.undoALine()
+	pass # Replace with function body.
