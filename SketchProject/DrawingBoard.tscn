@@ -433,9 +433,9 @@ margin_bottom = 235.0
 rect_min_size = Vector2( 400, 140 )
 popup_exclusive = true
 access = 2
-filters = PoolStringArray( "*.png" )
-current_dir = "C:/Users/saraj/Desktop/NewSketch/Sketch-/SketchProject"
-current_path = "C:/Users/saraj/Desktop/NewSketch/Sketch-/SketchProject/"
+filters = PoolStringArray( "*.png", "*.jpg" )
+current_dir = "C:/Users/erics/Desktop/Sketch-/SketchProject"
+current_path = "C:/Users/erics/Desktop/Sketch-/SketchProject/"
 __meta__ = {
 "_edit_use_anchors_": false
 }

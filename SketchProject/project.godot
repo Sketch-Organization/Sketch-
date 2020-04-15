@@ -20,6 +20,10 @@ run/main_scene="res://Title.tscn"
 boot_splash/bg_color=Color( 0, 0, 0, 1 )
 config/icon="res://icon.png"
 
+[autoload]
+
+FilePath="*res://FilePath.gd"
+
 [display]
 
 window/size/resizable=false

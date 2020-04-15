@@ -502,9 +502,9 @@ window_title = "Open a File"
 resizable = true
 mode = 0
 access = 2
-filters = PoolStringArray( "*.png" )
-current_dir = "C:/Users/saraj/Desktop/NewSketch/Sketch-/SketchProject"
-current_path = "C:/Users/saraj/Desktop/NewSketch/Sketch-/SketchProject/"
+filters = PoolStringArray( "*.png", "*.jpg" )
+current_dir = "C:/Users/erics/Desktop/Sketch-/SketchProject"
+current_path = "C:/Users/erics/Desktop/Sketch-/SketchProject/"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -515,3 +515,4 @@ __meta__ = {
 [connection signal="pressed" from="HostPopup/LoadButton" to="." method="_on_LoadButton_pressed"]
 [connection signal="pressed" from="JoinPopup/CloseButton" to="." method="_on_CloseButton_pressed"]
 [connection signal="pressed" from="JoinPopup/JoinBoardButton" to="." method="_on_JoinBoardButton_pressed"]
+[connection signal="confirmed" from="FileDialog" to="." method="_on_FileDialog_confirmed"]
