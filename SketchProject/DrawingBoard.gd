@@ -17,6 +17,8 @@ func _ready():
 	fileSaver.add_button("CANCEL", true, "CANCEL")
 	var button = $ExitPopup/MarginContainer/VBoxContainer/HBoxContainer/YesButton
 	button.connect("pressed", self, "_on_Button_pressed", [button.scene_to_load])
+	if(FilePath.loadedFile):
+		board.loadData(FilePath.getFilePath())
 	pass
 
 func _on_Button_pressed(scene_to_load):

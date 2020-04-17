@@ -26,5 +26,15 @@ size = Vector2( 1024, 600 )
 handle_input_locally = false
 render_target_update_mode = 3
 
+[node name="TextureRect" type="TextureRect" parent="ViewportContainer/Viewport"]
+margin_right = 1024.0
+margin_bottom = 600.0
+rect_min_size = Vector2( 1024, 600 )
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+expand = true
+stretch_mode = 6
+
 [node name="Canvas" parent="ViewportContainer/Viewport" instance=ExtResource( 1 )]
 [connection signal="resized" from="ViewportContainer" to="." method="_on_ViewportContainer_resized"]

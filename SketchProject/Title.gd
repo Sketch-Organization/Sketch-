@@ -15,6 +15,7 @@ func _ready():
 	hostPopupMenu = get_node("HostPopup")
 	joinPopupMenu = get_node("JoinPopup")
 	fileOpenner = get_node("FileDialog")
+	FilePath.loadedFile = false
 	pass # Replace with function body.
 
 func _on_Button_pressed(scene_to_load):
@@ -47,4 +48,9 @@ func _on_JoinBoardButton_pressed():
 
 func _on_LoadButton_pressed():
 	fileOpenner.show()
+	pass # Replace with function body.
+
+func _on_FileDialog_confirmed():
+	FilePath.setFilePath(fileOpenner.current_path)
+	_on_CreateButton_pressed()
 	pass # Replace with function body.
