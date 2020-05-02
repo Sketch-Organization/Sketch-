@@ -12,19 +12,23 @@ func _ready():
 	currentColor = Color("#000000")
 	currentWidth = 4
 	pass
-	
+
 func _process(delta):
 	if Input.is_action_just_pressed("LeftClick"):
 		if(parent.sav == false):
-			var line = newLine.instance()
-			line.default_color = currentColor
-			line.width = currentWidth
-			add_child(line)
-			Lines.append(line.name)
+			createLine()
 			#print(line.name)
 		if(eraser == true):
 			eraseLine()
-			 
+
+func createLine():
+	var line = newLine.instance()
+	line.default_color = currentColor
+	line.width = currentWidth
+	add_child(line)
+	Lines.append(line.name)
+	pass
+
 func undoLine():
 	get_node(Lines.back()).queue_free()
 	Lines.pop_back()

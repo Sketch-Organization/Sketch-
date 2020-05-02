@@ -401,6 +401,7 @@ margin_left = -107.5
 margin_top = -39.0
 margin_right = 107.5
 mouse_default_cursor_shape = 0
+text = "Enter IP Address"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -503,8 +504,8 @@ resizable = true
 mode = 0
 access = 2
 filters = PoolStringArray( "*.png", "*.jpg" )
-current_dir = "C:/Users/saraj/Desktop/NewSketch/Sketch-/SketchProject"
-current_path = "C:/Users/saraj/Desktop/NewSketch/Sketch-/SketchProject/"
+current_dir = "C:/Users/erics/Desktop/Sketch-/SketchProject"
+current_path = "C:/Users/erics/Desktop/Sketch-/SketchProject/"
 __meta__ = {
 "_edit_use_anchors_": false
 }

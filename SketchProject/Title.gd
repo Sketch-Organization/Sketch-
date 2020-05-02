@@ -38,12 +38,15 @@ func _on_CloseButton_pressed():
 	joinPopupMenu.hide()
 	pass # Replace with function body.
 
-
 func _on_CreateButton_pressed():
+	Globals.host = true
 	_on_Button_pressed("res://DrawingBoard.tscn")
 	pass # Replace with function body.
 
 func _on_JoinBoardButton_pressed():
+	Globals.join = true
+	Globals.IPtoJoin = get_node("JoinPopup/Form/LineEdit").text
+	_on_Button_pressed("res://DrawingBoard.tscn")
 	pass # Replace with function body.
 
 func _on_LoadButton_pressed():

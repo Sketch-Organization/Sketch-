@@ -9,16 +9,46 @@ var sav
 var fileSaver
 
 func _ready():
+	get_tree().connect("network_peer_connected", self, "_player_connected")
+	if(Globals.host):
+		#hostGame
+		print("hosting")
+		hostServer()
+	elif(Globals.join):
+		#joinGame
+		print("joining")
+		joinServer(Globals.IPtoJoin)
+	else:
+		print("couldn't not host or join")
+	
 	fileSaver = get_node("FileDialog")
 	leftUI = get_node("SettingsUIHBox/SettingsUI")
 	rightUI = get_node("SettingsUIHBox/UtensilEditor")
 	board = get_node("SettingsUIHBox/DrawingBoard/Board")
 	exitPopup = get_node("ExitPopup")
 	fileSaver.add_button("CANCEL", true, "CANCEL")
-	var button = $ExitPopup/MarginContainer/VBoxContainer/HBoxContainer/YesButton
-	button.connect("pressed", self, "_on_Button_pressed", [button.scene_to_load])
 	if(FilePath.loadedFile):
 		board.loadData(FilePath.getFilePath())
+	pass
+
+func _player_connected(id):
+	print("Player ", id, " connected to the server!")
+	Globals.otherPlayerId = id
+
+func hostServer():
+	var host = NetworkedMultiplayerENet.new()
+	var res = host.create_server(1234,2)
+	if(res != OK):
+		print("Error creating server")
+		return
+	get_tree().set_network_peer(host)
+	set_network_master(get_tree().get_network_unique_id())
+	pass
+
+func joinServer(newIP):
+	var host = NetworkedMultiplayerENet.new()
+	host.create_client(newIP,1234)
+	get_tree().set_network_peer(host)
 	pass
 
 func _on_Button_pressed(scene_to_load):
@@ -91,3 +121,26 @@ func _on_ClearButton_button_up():
 func _on_UndoButton_button_up():
 	board.undoALine()
 	pass # Replace with function body.
+
+func _on_YesButton_button_up():
+	_close_server()
+	pass # Replace with function body.
+
+func _close_server():
+	#kick players
+	for i in Globals.numPlayers:
+		if i != 1:
+			print(i)
+			rpc_id(i,"kicked", "Server Closed")
+			get_tree().network_peer.disconnect_peer(i)
+	Globals.numPlayers.clear()
+	#Terminate server
+	get_tree().set_network_peer(null)
+	emit_signal("server_stopped")
+	get_tree().get_nodes_in_group("Level")[0].queue_free()
+	_on_Button_pressed("res://Title.tscn")
+	pass
+
+remote func kicked(reason):
+	get_tree().network_peer.disconnect_peer(Globals.otherPlayerId)
+	print("You have been kicked from the server, reason: ", reason)

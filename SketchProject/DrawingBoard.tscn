@@ -6,8 +6,7 @@
 [ext_resource path="res://sketchbutton.PNG" type="Texture" id=4]
 [ext_resource path="res://onclick.PNG" type="Texture" id=5]
 [ext_resource path="res://DrawingBoard.gd" type="Script" id=6]
-[ext_resource path="res://ChangeSceneButton.gd" type="Script" id=7]
-[ext_resource path="res://Board.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Board.gd" type="Script" id=8]
 [ext_resource path="res://pencilpressed.png" type="Texture" id=9]
 [ext_resource path="res://eraserpressed.png" type="Texture" id=10]
 [ext_resource path="res://pencilhover.png" type="Texture" id=11]
@@ -26,6 +25,7 @@
 [ext_resource path="res://colorcopierregular.png" type="Texture" id=24]
 [ext_resource path="res://pinkregular.png" type="Texture" id=25]
 [ext_resource path="res://pinkhover.png" type="Texture" id=26]
+[ext_resource path="res://Canvas.gd" type="Script" id=27]
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -168,7 +168,41 @@ margin_bottom = 600.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Board" parent="SettingsUIHBox/DrawingBoard" instance=ExtResource( 8 )]
+[node name="Board" type="Control" parent="SettingsUIHBox/DrawingBoard"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ViewportContainer" type="ViewportContainer" parent="SettingsUIHBox/DrawingBoard/Board"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+stretch = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Viewport" type="Viewport" parent="SettingsUIHBox/DrawingBoard/Board/ViewportContainer"]
+size = Vector2( 816, 600 )
+handle_input_locally = false
+render_target_update_mode = 3
+
+[node name="TextureRect" type="TextureRect" parent="SettingsUIHBox/DrawingBoard/Board/ViewportContainer/Viewport"]
+margin_right = 1024.0
+margin_bottom = 600.0
+rect_min_size = Vector2( 1024, 600 )
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+expand = true
+stretch_mode = 6
+
+[node name="Canvas" type="Node" parent="SettingsUIHBox/DrawingBoard/Board/ViewportContainer/Viewport"]
+script = ExtResource( 27 )
 
 [node name="UtensilEditor" type="Control" parent="SettingsUIHBox"]
 margin_left = 924.0
@@ -417,8 +451,6 @@ size_flags_vertical = 3
 texture_normal = ExtResource( 2 )
 texture_pressed = ExtResource( 1 )
 expand = true
-script = ExtResource( 7 )
-scene_to_load = "res://Title.tscn"
 
 [node name="Label" type="Label" parent="ExitPopup/MarginContainer/VBoxContainer/HBoxContainer/YesButton"]
 anchor_right = 1.0
@@ -470,28 +502,23 @@ rect_min_size = Vector2( 400, 140 )
 popup_exclusive = true
 access = 2
 filters = PoolStringArray( "*.png", "*.jpg" )
-current_dir = "C:/Users/saraj/Desktop/NewSketch/Sketch-/SketchProject"
-current_path = "C:/Users/saraj/Desktop/NewSketch/Sketch-/SketchProject/"
+current_dir = "C:/Users/erics/Desktop/Sketch-/SketchProject"
+current_path = "C:/Users/erics/Desktop/Sketch-/SketchProject/"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 [connection signal="button_up" from="SettingsUIHBox/SettingsUI/VBoxContainer/SaveButton" to="." method="_on_SaveButton_button_up"]
 [connection signal="pressed" from="SettingsUIHBox/SettingsUI/VBoxContainer/ExitButton" to="." method="_on_ExitButton_pressed"]
+[connection signal="resized" from="SettingsUIHBox/DrawingBoard/Board/ViewportContainer" to="SettingsUIHBox/DrawingBoard/Board" method="_on_ViewportContainer_resized"]
 [connection signal="mouse_entered" from="SettingsUIHBox/UtensilEditor/VBoxContainer2" to="." method="_on_VBoxContainer2_mouse_entered"]
 [connection signal="mouse_exited" from="SettingsUIHBox/UtensilEditor/VBoxContainer2" to="." method="_on_VBoxContainer2_mouse_exited"]
-[connection signal="button_down" from="SettingsUIHBox/UtensilEditor/VBoxContainer2/ColorPickerButton" to="." method="_on_ColorPickerButton_button_down"]
 [connection signal="color_changed" from="SettingsUIHBox/UtensilEditor/VBoxContainer2/ColorPickerButton" to="." method="_on_ColorPickerButton_color_changed"]
-[connection signal="mouse_entered" from="SettingsUIHBox/UtensilEditor/VBoxContainer2/ColorPickerButton" to="." method="_on_ColorPickerButton_mouse_entered"]
-[connection signal="mouse_exited" from="SettingsUIHBox/UtensilEditor/VBoxContainer2/ColorPickerButton" to="." method="_on_ColorPickerButton_mouse_exited"]
-[connection signal="picker_created" from="SettingsUIHBox/UtensilEditor/VBoxContainer2/ColorPickerButton" to="." method="_on_ColorPickerButton_picker_created"]
-[connection signal="popup_closed" from="SettingsUIHBox/UtensilEditor/VBoxContainer2/ColorPickerButton" to="." method="_on_ColorPickerButton_popup_closed"]
-[connection signal="pressed" from="SettingsUIHBox/UtensilEditor/VBoxContainer2/ColorPickerButton" to="." method="_on_ColorPickerButton_pressed"]
-[connection signal="toggled" from="SettingsUIHBox/UtensilEditor/VBoxContainer2/ColorPickerButton" to="." method="_on_ColorPickerButton_toggled"]
 [connection signal="toggled" from="SettingsUIHBox/UtensilEditor/VBoxContainer2/EraserButton" to="." method="_on_EraserButton_toggled"]
 [connection signal="button_up" from="SettingsUIHBox/UtensilEditor/VBoxContainer2/ClearButton" to="." method="_on_ClearButton_button_up"]
 [connection signal="button_up" from="SettingsUIHBox/UtensilEditor/VBoxContainer2/UndoButton" to="." method="_on_UndoButton_button_up"]
 [connection signal="value_changed" from="SettingsUIHBox/UtensilEditor/VBoxContainer2/SpinBox" to="." method="_on_SpinBox_value_changed"]
 [connection signal="toggled" from="Buttons/SettingsButton" to="." method="_on_SettingsButton_toggled"]
+[connection signal="button_up" from="ExitPopup/MarginContainer/VBoxContainer/HBoxContainer/YesButton" to="." method="_on_YesButton_button_up"]
 [connection signal="pressed" from="ExitPopup/MarginContainer/VBoxContainer/HBoxContainer/NoButton" to="." method="_on_NoButton_pressed"]
 [connection signal="confirmed" from="FileDialog" to="." method="_on_FileDialog_confirmed"]
 [connection signal="custom_action" from="FileDialog" to="." method="_on_FileDialog_custom_action"]
