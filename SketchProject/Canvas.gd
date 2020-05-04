@@ -16,18 +16,20 @@ func _ready():
 func _process(delta):
 	if Input.is_action_just_pressed("LeftClick"):
 		if(parent.sav == false):
-			var line = newLine.instance()
-			line.default_color = currentColor
-			line.width = currentWidth
-			add_child(line)
-			Lines.append(line.name)
-			#print(line.name)
+			rpc("draw")
 		if(eraser == true):
 			eraseLine()
-			 
+	
+	if Input.is_action_just_released("LeftClick"):
+		if(parent.sav == false):
+			var lastLine = Lines.back()
+			rpc("add_line_to_clients", lastLine)
+		
+		
 func undoLine():
-	get_node(Lines.back()).queue_free()
-	Lines.pop_back()
+	if Lines.size() > 0:
+		get_node(Lines.back()).queue_free()
+		Lines.pop_back()
 	pass
 
 func eraseLine():
@@ -53,3 +55,14 @@ func getColor():
 	
 func getWidth():
 	return currentWidth
+
+remotesync func draw():
+	var line = newLine.instance()
+	line.default_color = currentColor
+	line.width = currentWidth
+	add_child(line)
+	Lines.append(line.name)
+	
+remote func add_line_to_clients(lineToAdd):
+	add_child(lineToAdd)
+	Lines.append(lineToAdd.name)

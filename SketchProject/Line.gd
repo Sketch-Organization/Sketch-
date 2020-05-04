@@ -1,6 +1,7 @@
 extends Line2D
 
 var timer
+var pos
 
 func _ready():
 	timer = get_node("Timer")
@@ -11,6 +12,14 @@ func _process(delta):
 		timer.stop()
 
 func _on_Timer_timeout():
-	add_point(get_global_mouse_position())
+	pos = getMousePos()
+	addPoint(pos)
 	timer.start()
 	pass # Replace with function body.
+
+func addPoint(mousePos):
+	add_point(mousePos)
+	pass
+
+func getMousePos():
+	return get_viewport().get_mouse_position()
