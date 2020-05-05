@@ -16,14 +16,14 @@ func _ready():
 func _process(delta):
 	if Input.is_action_just_pressed("LeftClick"):
 		if(parent.sav == false):
-			rpc("draw")
+			drawLine()
 		if(eraser == true):
 			eraseLine()
 	
-	if Input.is_action_just_released("LeftClick"):
-		if(parent.sav == false):
-			var lastLine = Lines.back()
-			rpc("add_line_to_clients", lastLine)
+#	if Input.is_action_just_released("LeftClick"):
+#		if(parent.sav == false):
+#			var lastLine = Lines.back()
+#			rpc("add_line_to_clients", lastLine)
 		
 		
 func undoLine():
@@ -56,13 +56,22 @@ func getColor():
 func getWidth():
 	return currentWidth
 
-remotesync func draw():
+remote func draw(lineName, color, width):
+	var line = newLine.instance()
+	line.default_color = color
+	line.width = width
+	line.name = lineName
+	add_child(line)
+	Lines.append(line.name)
+	
+#remote func add_line_to_clients(lineToAdd):
+#	add_child(lineToAdd)
+#	Lines.append(lineToAdd.name)
+
+func drawLine():
 	var line = newLine.instance()
 	line.default_color = currentColor
 	line.width = currentWidth
 	add_child(line)
 	Lines.append(line.name)
-	
-remote func add_line_to_clients(lineToAdd):
-	add_child(lineToAdd)
-	Lines.append(lineToAdd.name)
+	rpc("draw", line.name, line.default_color, line.width)
