@@ -11,6 +11,12 @@ func _process(delta):
 		timer.stop()
 
 func _on_Timer_timeout():
-	add_point(get_global_mouse_position())
+	addPoint(get_global_mouse_position())
 	timer.start()
 	pass # Replace with function body.
+
+func addPoint(pos):
+	if(0 < pos.x and pos.x < 1024 and 0 < pos.y and pos.y < 600):
+		add_point(pos)
+		pass
+	pass

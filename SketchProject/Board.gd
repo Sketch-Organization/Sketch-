@@ -28,7 +28,7 @@ func setUtensilWidth(newWidth):
 
 func saveData(path):
 	var img = get_node("ViewportContainer/Viewport").get_texture().get_data()
-	#img.flip_y() # if the image is saved upsidedown do this
+	img.flip_y() # if the image is saved upsidedown do this
 	img.save_png(path)
 	pass
 
