@@ -1,0 +1,556 @@
+[gd_scene load_steps=29 format=2]
+
+[ext_resource path="res://Assets/selectedIcon.png" type="Texture" id=1]
+[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://Assets/onhover.PNG" type="Texture" id=3]
+[ext_resource path="res://Assets/sketchbutton.PNG" type="Texture" id=4]
+[ext_resource path="res://Assets/onclick.PNG" type="Texture" id=5]
+[ext_resource path="res://Scripts/DrawingBoard.gd" type="Script" id=6]
+[ext_resource path="res://Scenes/Board.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Assets/pencilpressed.png" type="Texture" id=9]
+[ext_resource path="res://Assets/eraserpressed.png" type="Texture" id=10]
+[ext_resource path="res://Assets/pencilhover.png" type="Texture" id=11]
+[ext_resource path="res://Assets/eraserhover.png" type="Texture" id=12]
+[ext_resource path="res://Assets/eraserregular.png" type="Texture" id=13]
+[ext_resource path="res://Assets/pencilregular.png" type="Texture" id=14]
+[ext_resource path="res://Assets/colorcopierhover.png" type="Texture" id=15]
+[ext_resource path="res://Assets/undopressed.png" type="Texture" id=16]
+[ext_resource path="res://Assets/clearpressed.png" type="Texture" id=17]
+[ext_resource path="res://Assets/undo regular.png" type="Texture" id=18]
+[ext_resource path="res://Assets/clearegular.png" type="Texture" id=19]
+[ext_resource path="res://Assets/clearhover.png" type="Texture" id=20]
+[ext_resource path="res://Assets/colorcopierpressed.png" type="Texture" id=21]
+[ext_resource path="res://Assets/undohover.png" type="Texture" id=22]
+[ext_resource path="res://Assets/pinkpressed.png" type="Texture" id=23]
+[ext_resource path="res://Assets/colorcopierregular.png" type="Texture" id=24]
+[ext_resource path="res://Assets/pinkregular.png" type="Texture" id=25]
+[ext_resource path="res://Assets/pinkhover.png" type="Texture" id=26]
+[ext_resource path="res://Scenes/UserDisplay.tscn" type="PackedScene" id=27]
+[ext_resource path="res://Scripts/UsersVBox.gd" type="Script" id=28]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.964706, 0.945098, 0.866667, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0, 0, 0, 1 )
+border_blend = true
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SettingsUIHBox" type="HBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SettingsUI" type="Control" parent="SettingsUIHBox"]
+margin_right = 100.0
+margin_bottom = 600.0
+rect_min_size = Vector2( 100, 0 )
+size_flags_vertical = 3
+
+[node name="ColorRect" type="ColorRect" parent="SettingsUIHBox/SettingsUI"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.964706, 0.945098, 0.866667, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SettingsUIHBox/SettingsUI"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control" type="Control" parent="SettingsUIHBox/SettingsUI/VBoxContainer"]
+margin_right = 100.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 100, 50 )
+
+[node name="SaveButton" type="TextureButton" parent="SettingsUIHBox/SettingsUI/VBoxContainer"]
+margin_top = 54.0
+margin_right = 100.0
+margin_bottom = 104.0
+rect_min_size = Vector2( 100, 50 )
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource( 25 )
+texture_pressed = ExtResource( 23 )
+texture_hover = ExtResource( 26 )
+expand = true
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="SettingsUIHBox/SettingsUI/VBoxContainer/SaveButton"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "Save"
+align = 1
+valign = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LoadButton" type="TextureButton" parent="SettingsUIHBox/SettingsUI/VBoxContainer"]
+visible = false
+margin_top = 108.0
+margin_right = 100.0
+margin_bottom = 158.0
+rect_min_size = Vector2( 100, 50 )
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource( 25 )
+texture_pressed = ExtResource( 23 )
+texture_hover = ExtResource( 26 )
+expand = true
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="SettingsUIHBox/SettingsUI/VBoxContainer/LoadButton"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "Load"
+align = 1
+valign = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="UsersButton" type="TextureButton" parent="SettingsUIHBox/SettingsUI/VBoxContainer"]
+margin_top = 108.0
+margin_right = 100.0
+margin_bottom = 158.0
+rect_min_size = Vector2( 100, 50 )
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource( 25 )
+texture_pressed = ExtResource( 23 )
+texture_hover = ExtResource( 26 )
+expand = true
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="SettingsUIHBox/SettingsUI/VBoxContainer/UsersButton"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "Users"
+align = 1
+valign = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ExitButton" type="TextureButton" parent="SettingsUIHBox/SettingsUI/VBoxContainer"]
+margin_top = 162.0
+margin_right = 100.0
+margin_bottom = 212.0
+rect_min_size = Vector2( 100, 50 )
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource( 25 )
+texture_pressed = ExtResource( 23 )
+texture_hover = ExtResource( 26 )
+expand = true
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="SettingsUIHBox/SettingsUI/VBoxContainer/ExitButton"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "Exit"
+align = 1
+valign = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DrawingBoard" type="Control" parent="SettingsUIHBox"]
+margin_left = 104.0
+margin_right = 920.0
+margin_bottom = 600.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Board" parent="SettingsUIHBox/DrawingBoard" instance=ExtResource( 8 )]
+
+[node name="UtensilEditor" type="Control" parent="SettingsUIHBox"]
+margin_left = 924.0
+margin_right = 1024.0
+margin_bottom = 600.0
+rect_min_size = Vector2( 100, 0 )
+size_flags_vertical = 3
+
+[node name="ColorRect2" type="ColorRect" parent="SettingsUIHBox/UtensilEditor"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.964706, 0.945098, 0.866667, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="SettingsUIHBox/UtensilEditor"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="SettingsUIHBox/UtensilEditor/VBoxContainer2"]
+margin_right = 100.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 100, 50 )
+mouse_default_cursor_shape = 2
+text = "Pick Color"
+
+[node name="PencilButton" type="TextureButton" parent="SettingsUIHBox/UtensilEditor/VBoxContainer2"]
+margin_top = 54.0
+margin_right = 100.0
+margin_bottom = 104.0
+rect_min_size = Vector2( 100, 50 )
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource( 14 )
+texture_pressed = ExtResource( 9 )
+texture_hover = ExtResource( 11 )
+expand = true
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="SettingsUIHBox/UtensilEditor/VBoxContainer2/PencilButton"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "Pencil"
+align = 1
+valign = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EraserButton" type="TextureButton" parent="SettingsUIHBox/UtensilEditor/VBoxContainer2"]
+margin_top = 108.0
+margin_right = 100.0
+margin_bottom = 158.0
+rect_min_size = Vector2( 100, 50 )
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+toggle_mode = true
+texture_normal = ExtResource( 13 )
+texture_pressed = ExtResource( 10 )
+texture_hover = ExtResource( 12 )
+expand = true
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="SettingsUIHBox/UtensilEditor/VBoxContainer2/EraserButton"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "Eraser"
+align = 1
+valign = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorCopier" type="TextureButton" parent="SettingsUIHBox/UtensilEditor/VBoxContainer2"]
+margin_top = 162.0
+margin_right = 100.0
+margin_bottom = 212.0
+rect_min_size = Vector2( 100, 50 )
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource( 24 )
+texture_pressed = ExtResource( 21 )
+texture_hover = ExtResource( 15 )
+expand = true
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="SettingsUIHBox/UtensilEditor/VBoxContainer2/ColorCopier"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "Color 
+Copier"
+align = 1
+valign = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ClearButton" type="TextureButton" parent="SettingsUIHBox/UtensilEditor/VBoxContainer2"]
+margin_top = 216.0
+margin_right = 100.0
+margin_bottom = 266.0
+rect_min_size = Vector2( 100, 50 )
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource( 19 )
+texture_pressed = ExtResource( 17 )
+texture_hover = ExtResource( 20 )
+expand = true
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="SettingsUIHBox/UtensilEditor/VBoxContainer2/ClearButton"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "Clear"
+align = 1
+valign = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="UndoButton" type="TextureButton" parent="SettingsUIHBox/UtensilEditor/VBoxContainer2"]
+margin_top = 270.0
+margin_right = 100.0
+margin_bottom = 320.0
+rect_min_size = Vector2( 100, 50 )
+focus_mode = 0
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+enabled_focus_mode = 0
+texture_normal = ExtResource( 18 )
+texture_pressed = ExtResource( 16 )
+texture_hover = ExtResource( 22 )
+expand = true
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="SettingsUIHBox/UtensilEditor/VBoxContainer2/UndoButton"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "Undo"
+align = 1
+valign = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SpinBox" type="SpinBox" parent="SettingsUIHBox/UtensilEditor/VBoxContainer2"]
+margin_top = 324.0
+margin_right = 100.0
+margin_bottom = 348.0
+mouse_filter = 1
+min_value = 3.0
+value = 3.0
+rounded = true
+align = 1
+prefix = "GIRTH:"
+
+[node name="Buttons" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 100, 50 )
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SettingsButton" type="TextureButton" parent="Buttons"]
+margin_right = 40.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 100, 50 )
+toggle_mode = true
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 5 )
+texture_hover = ExtResource( 3 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ExitPopup" type="PopupMenu" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -256.0
+margin_top = -150.0
+margin_right = 256.0
+margin_bottom = 150.0
+rect_min_size = Vector2( 512, 300 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="ExitPopup"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 20
+custom_constants/margin_top = 20
+custom_constants/margin_left = 20
+custom_constants/margin_bottom = 20
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ExitPopup/MarginContainer"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 492.0
+margin_bottom = 280.0
+
+[node name="Label" type="Label" parent="ExitPopup/MarginContainer/VBoxContainer"]
+margin_right = 472.0
+margin_bottom = 128.0
+size_flags_horizontal = 3
+size_flags_vertical = 7
+text = "Are you sure you want to return to the title screen?"
+align = 1
+valign = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ExitPopup/MarginContainer/VBoxContainer"]
+margin_top = 132.0
+margin_right = 472.0
+margin_bottom = 260.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="YesButton" type="TextureButton" parent="ExitPopup/MarginContainer/VBoxContainer/HBoxContainer"]
+margin_right = 222.0
+margin_bottom = 128.0
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = ExtResource( 2 )
+texture_pressed = ExtResource( 1 )
+expand = true
+
+[node name="Label" type="Label" parent="ExitPopup/MarginContainer/VBoxContainer/HBoxContainer/YesButton"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "Yes"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control" type="Control" parent="ExitPopup/MarginContainer/VBoxContainer/HBoxContainer"]
+margin_left = 226.0
+margin_right = 246.0
+margin_bottom = 128.0
+rect_min_size = Vector2( 20, 0 )
+
+[node name="NoButton" type="TextureButton" parent="ExitPopup/MarginContainer/VBoxContainer/HBoxContainer"]
+margin_left = 250.0
+margin_right = 472.0
+margin_bottom = 128.0
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = ExtResource( 2 )
+texture_pressed = ExtResource( 1 )
+expand = true
+
+[node name="Label" type="Label" parent="ExitPopup/MarginContainer/VBoxContainer/HBoxContainer/NoButton"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "No"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FileDialog" type="FileDialog" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -329.5
+margin_top = -235.0
+margin_right = 329.5
+margin_bottom = 235.0
+rect_min_size = Vector2( 400, 140 )
+popup_exclusive = true
+access = 2
+filters = PoolStringArray( "*.png", "*.jpg" )
+current_dir = "C:/Users/erics/Desktop/Sketch-/SketchProject"
+current_path = "C:/Users/erics/Desktop/Sketch-/SketchProject/"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="WindowDialog" type="WindowDialog" parent="."]
+visible = true
+margin_left = 100.0
+margin_top = 400.0
+margin_right = 350.0
+margin_bottom = 600.0
+custom_styles/panel = SubResource( 1 )
+custom_colors/title_color = Color( 0, 0, 0, 1 )
+popup_exclusive = true
+window_title = "Online Sketchers"
+resizable = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="WindowDialog"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 2
+custom_constants/margin_top = 2
+custom_constants/margin_left = 2
+custom_constants/margin_bottom = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="WindowDialog/MarginContainer"]
+margin_left = 2.0
+margin_top = 2.0
+margin_right = 248.0
+margin_bottom = 198.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="UsersVBox" type="VBoxContainer" parent="WindowDialog/MarginContainer/ScrollContainer"]
+margin_right = 246.0
+margin_bottom = 196.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 2
+script = ExtResource( 28 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="UserDisplay" parent="WindowDialog/MarginContainer/ScrollContainer/UsersVBox" instance=ExtResource( 27 )]
+margin_right = 246.0
+[connection signal="button_up" from="SettingsUIHBox/SettingsUI/VBoxContainer/SaveButton" to="." method="_on_SaveButton_button_up"]
+[connection signal="button_up" from="SettingsUIHBox/SettingsUI/VBoxContainer/UsersButton" to="." method="_on_UsersButton_button_up"]
+[connection signal="pressed" from="SettingsUIHBox/SettingsUI/VBoxContainer/ExitButton" to="." method="_on_ExitButton_pressed"]
+[connection signal="mouse_entered" from="SettingsUIHBox/DrawingBoard/Board" to="SettingsUIHBox/DrawingBoard/Board" method="_on_Board_mouse_entered"]
+[connection signal="mouse_exited" from="SettingsUIHBox/DrawingBoard/Board" to="SettingsUIHBox/DrawingBoard/Board" method="_on_Board_mouse_exited"]
+[connection signal="mouse_entered" from="SettingsUIHBox/UtensilEditor/VBoxContainer2" to="." method="_on_VBoxContainer2_mouse_entered"]
+[connection signal="mouse_exited" from="SettingsUIHBox/UtensilEditor/VBoxContainer2" to="." method="_on_VBoxContainer2_mouse_exited"]
+[connection signal="color_changed" from="SettingsUIHBox/UtensilEditor/VBoxContainer2/ColorPickerButton" to="." method="_on_ColorPickerButton_color_changed"]
+[connection signal="toggled" from="SettingsUIHBox/UtensilEditor/VBoxContainer2/EraserButton" to="." method="_on_EraserButton_toggled"]
+[connection signal="button_up" from="SettingsUIHBox/UtensilEditor/VBoxContainer2/ClearButton" to="." method="_on_ClearButton_button_up"]
+[connection signal="button_up" from="SettingsUIHBox/UtensilEditor/VBoxContainer2/UndoButton" to="." method="_on_UndoButton_button_up"]
+[connection signal="value_changed" from="SettingsUIHBox/UtensilEditor/VBoxContainer2/SpinBox" to="." method="_on_SpinBox_value_changed"]
+[connection signal="toggled" from="Buttons/SettingsButton" to="." method="_on_SettingsButton_toggled"]
+[connection signal="button_up" from="ExitPopup/MarginContainer/VBoxContainer/HBoxContainer/YesButton" to="." method="_on_YesButton_button_up"]
+[connection signal="pressed" from="ExitPopup/MarginContainer/VBoxContainer/HBoxContainer/NoButton" to="." method="_on_NoButton_pressed"]
+[connection signal="confirmed" from="FileDialog" to="." method="_on_FileDialog_confirmed"]
+[connection signal="custom_action" from="FileDialog" to="." method="_on_FileDialog_custom_action"]
+[connection signal="mouse_entered" from="WindowDialog" to="." method="_on_WindowDialog_mouse_entered"]
+[connection signal="mouse_exited" from="WindowDialog" to="." method="_on_WindowDialog_mouse_exited"]

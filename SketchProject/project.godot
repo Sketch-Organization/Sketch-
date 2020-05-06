@@ -16,13 +16,14 @@ _global_script_class_icons={
 [application]
 
 config/name="Sketch Project"
-run/main_scene="res://Title.tscn"
+run/main_scene="res://Scenes/Title.tscn"
 boot_splash/bg_color=Color( 0, 0, 0, 1 )
 config/icon="res://icon.png"
 
 [autoload]
 
-FilePath="*res://FilePath.gd"
+FilePath="*res://Scripts/FilePath.gd"
+Globals="*res://Scripts/Globals.gd"
 
 [display]
 
