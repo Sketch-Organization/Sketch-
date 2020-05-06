@@ -19,14 +19,11 @@ func _process(delta):
 			drawLine()
 		if(eraser == true):
 			eraseLine()
-	
-#	if Input.is_action_just_released("LeftClick"):
-#		if(parent.sav == false):
-#			var lastLine = Lines.back()
-#			rpc("add_line_to_clients", lastLine)
-		
-		
 func undoLine():
+	rpc("undo")
+	pass
+	
+remotesync func undo():
 	if Lines.size() > 0:
 		get_node(Lines.back()).queue_free()
 		Lines.pop_back()
@@ -38,10 +35,15 @@ func eraseLine():
 	pass
 	
 func clearBoard():
+	if(get_tree().is_network_server()):
+		rpc("clear")
+	pass
+	
+remotesync func clear():
 	for child in get_children():
 		child.queue_free()
 	pass
-	
+
 func setColor(newColor):
 	currentColor = newColor
 	pass
@@ -56,22 +58,18 @@ func getColor():
 func getWidth():
 	return currentWidth
 
-remote func draw(lineName, color, width):
+remote func draw(color, width, position):
 	var line = newLine.instance()
 	line.default_color = color
 	line.width = width
-	line.name = lineName
+	line.pos = position
 	add_child(line)
 	Lines.append(line.name)
 	
-#remote func add_line_to_clients(lineToAdd):
-#	add_child(lineToAdd)
-#	Lines.append(lineToAdd.name)
-
 func drawLine():
 	var line = newLine.instance()
 	line.default_color = currentColor
 	line.width = currentWidth
 	add_child(line)
 	Lines.append(line.name)
-	rpc("draw", line.name, line.default_color, line.width)
+	rpc("draw", line.default_color, line.width, line.pos)

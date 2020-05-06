@@ -15,7 +15,8 @@ func _process(delta):
 func _on_Timer_timeout():
 	posPrev = pos
 	pos = getMousePos()
-	rpc("addPoint", posPrev, pos)
+	if(0 < pos.x and pos.x < 1024 and 0 < pos.y and pos.y < 600):
+		rpc("addPoint", posPrev, pos)
 	timer.start()
 	pass # Replace with function body.
 
