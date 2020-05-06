@@ -180,3 +180,8 @@ func _on_WindowDialog_mouse_entered():
 func _on_WindowDialog_mouse_exited():
 	board.resumeDrawing()
 	pass # Replace with function body.
+
+func _on_Control_mouse_exited():
+	get_viewport().warp_mouse(Vector2(0,0))
+	print("Gmouse pos: ", get_global_mouse_position())
+	pass # Replace with function body.

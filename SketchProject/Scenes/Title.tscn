@@ -184,7 +184,6 @@ scale = Vector2( 0.186837, 0.170607 )
 texture = ExtResource( 5 )
 
 [node name="HostPopup" type="PopupMenu" parent="."]
-visible = true
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
