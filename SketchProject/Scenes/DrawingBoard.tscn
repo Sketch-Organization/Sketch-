@@ -1,11 +1,12 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=38 format=2]
 
-[ext_resource path="res://Assets/selectedIcon.png" type="Texture" id=1]
-[ext_resource path="res://icon.png" type="Texture" id=2]
-[ext_resource path="res://Assets/onhover.PNG" type="Texture" id=3]
-[ext_resource path="res://Assets/sketchbutton.PNG" type="Texture" id=4]
-[ext_resource path="res://Assets/onclick.PNG" type="Texture" id=5]
+[ext_resource path="res://Assets/togglereg.png" type="Texture" id=1]
+[ext_resource path="res://Assets/yesnohovered.png" type="Texture" id=2]
+[ext_resource path="res://Assets/yesnopressed.png" type="Texture" id=3]
+[ext_resource path="res://Assets/yesnoreg.png" type="Texture" id=4]
+[ext_resource path="res://Assets/togglepressed.png" type="Texture" id=5]
 [ext_resource path="res://Scripts/DrawingBoard.gd" type="Script" id=6]
+[ext_resource path="res://Assets/togglehovered.png" type="Texture" id=7]
 [ext_resource path="res://Scenes/Board.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Assets/pencilpressed.png" type="Texture" id=9]
 [ext_resource path="res://Assets/eraserpressed.png" type="Texture" id=10]
@@ -27,8 +28,38 @@
 [ext_resource path="res://Assets/pinkhover.png" type="Texture" id=26]
 [ext_resource path="res://Scenes/UserDisplay.tscn" type="PackedScene" id=27]
 [ext_resource path="res://Scripts/UsersVBox.gd" type="Script" id=28]
+[ext_resource path="res://BerlinRounded-Bold.otf" type="DynamicFontData" id=29]
 
-[sub_resource type="StyleBoxFlat" id=1]
+[sub_resource type="DynamicFont" id=1]
+size = 14
+outline_color = Color( 0.0352941, 0, 0, 1 )
+font_data = ExtResource( 29 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 18
+font_data = ExtResource( 29 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 13
+font_data = ExtResource( 29 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 14
+font_data = ExtResource( 29 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 19
+font_data = ExtResource( 29 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 40
+font_data = ExtResource( 29 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 40
+font_data = ExtResource( 29 )
+
+[sub_resource type="StyleBoxFlat" id=8]
 bg_color = Color( 0.964706, 0.945098, 0.866667, 1 )
 border_width_left = 1
 border_width_top = 1
@@ -94,6 +125,7 @@ stretch_mode = 5
 [node name="Label" type="Label" parent="SettingsUIHBox/SettingsUI/VBoxContainer/SaveButton"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+custom_fonts/font = SubResource( 1 )
 text = "Save"
 align = 1
 valign = 1
@@ -118,6 +150,7 @@ stretch_mode = 5
 [node name="Label" type="Label" parent="SettingsUIHBox/SettingsUI/VBoxContainer/LoadButton"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+custom_fonts/font = SubResource( 2 )
 text = "Load"
 align = 1
 valign = 1
@@ -141,6 +174,7 @@ stretch_mode = 5
 [node name="Label" type="Label" parent="SettingsUIHBox/SettingsUI/VBoxContainer/UsersButton"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+custom_fonts/font = SubResource( 3 )
 text = "Users"
 align = 1
 valign = 1
@@ -164,6 +198,7 @@ stretch_mode = 5
 [node name="Label" type="Label" parent="SettingsUIHBox/SettingsUI/VBoxContainer/ExitButton"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+custom_fonts/font = SubResource( 4 )
 text = "Exit"
 align = 1
 valign = 1
@@ -367,10 +402,11 @@ margin_bottom = 40.0
 rect_min_size = Vector2( 100, 50 )
 mouse_default_cursor_shape = 2
 toggle_mode = true
-texture_normal = ExtResource( 4 )
+texture_normal = ExtResource( 1 )
 texture_pressed = ExtResource( 5 )
-texture_hover = ExtResource( 3 )
+texture_hover = ExtResource( 7 )
 expand = true
+stretch_mode = 5
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -411,6 +447,7 @@ margin_right = 472.0
 margin_bottom = 128.0
 size_flags_horizontal = 3
 size_flags_vertical = 7
+custom_fonts/font = SubResource( 5 )
 text = "Are you sure you want to return to the title screen?"
 align = 1
 valign = 1
@@ -428,13 +465,15 @@ margin_bottom = 128.0
 mouse_default_cursor_shape = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-texture_normal = ExtResource( 2 )
-texture_pressed = ExtResource( 1 )
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 3 )
+texture_hover = ExtResource( 2 )
 expand = true
 
 [node name="Label" type="Label" parent="ExitPopup/MarginContainer/VBoxContainer/HBoxContainer/YesButton"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+custom_fonts/font = SubResource( 6 )
 text = "Yes"
 align = 1
 valign = 1
@@ -455,13 +494,15 @@ margin_bottom = 128.0
 mouse_default_cursor_shape = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-texture_normal = ExtResource( 2 )
-texture_pressed = ExtResource( 1 )
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 3 )
+texture_hover = ExtResource( 2 )
 expand = true
 
 [node name="Label" type="Label" parent="ExitPopup/MarginContainer/VBoxContainer/HBoxContainer/NoButton"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+custom_fonts/font = SubResource( 7 )
 text = "No"
 align = 1
 valign = 1
@@ -482,8 +523,8 @@ rect_min_size = Vector2( 400, 140 )
 popup_exclusive = true
 access = 2
 filters = PoolStringArray( "*.png", "*.jpg" )
-current_dir = "C:/Users/erics/Desktop/Sketch-/SketchProject"
-current_path = "C:/Users/erics/Desktop/Sketch-/SketchProject/"
+current_dir = "C:/Users/saraj/Desktop/NewSketch/Sketch-/SketchProject"
+current_path = "C:/Users/saraj/Desktop/NewSketch/Sketch-/SketchProject/"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -494,7 +535,7 @@ margin_left = 100.0
 margin_top = 400.0
 margin_right = 350.0
 margin_bottom = 600.0
-custom_styles/panel = SubResource( 1 )
+custom_styles/panel = SubResource( 8 )
 custom_colors/title_color = Color( 0, 0, 0, 1 )
 popup_exclusive = true
 window_title = "Online Sketchers"
