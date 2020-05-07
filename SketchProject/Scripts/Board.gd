@@ -83,6 +83,10 @@ func eraseALine():
 	canvas.eraseLine()
 	pass
 
+func resumingLines():
+	canvas.createLinesAgain()
+	pass
+
 func _on_Board_mouse_entered():
 	sav = true
 	pass # Replace with function body.

@@ -62,8 +62,13 @@ remotesync func undoLineRPC():
 	pass
 
 func eraseLine():
-		#return the name of the pressed line
-		#remove_child(line)
+	currentColor = Color("#ffffff")
+	currentWidth = 10
+	pass
+	
+func createLinesAgain():
+	currentColor = Color("#000000")
+	currentWidth = 4
 	pass
 	
 func clearBoard():

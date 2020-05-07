@@ -28,6 +28,18 @@ func _ready():
 	updateUsers()
 	pass
 
+func untoggle():
+	$TextureButton.pressed = false
+	pass
+
+func toggledButton(buttonName):
+	for i in get_children():
+		if(i.get_name() != buttonName):
+			i.untoggle()
+		else:
+			get_parent().get_parent().get_parent().get_parent().get_parent().selectedPrompt = buttonName
+	pass # Replace with function body.
+
 func _client_connected(id):
 	print("Player ", id, " connected to the server!")
 	Globals.playerIDs.append(id)
@@ -142,10 +154,6 @@ func _on_VBoxContainer2_mouse_entered():
 func _on_VBoxContainer2_mouse_exited():
 	board.resumeDrawing()
 	pass # Replace with function body.
-
-func _on_EraserButton_toggled(button_pressed):
-	board.stopDrawing()
-	pass # Replace with function body.
 	
 func _on_ClearButton_button_up():
 	board.clearEverything()
@@ -184,4 +192,12 @@ func _on_WindowDialog_mouse_exited():
 func _on_Control_mouse_exited():
 	get_viewport().warp_mouse(Vector2(0,0))
 	print("Gmouse pos: ", get_global_mouse_position())
+	pass # Replace with function body.
+
+func _on_EraserButton_button_up():
+	board.eraseALine()
+	pass # Replace with function body.
+
+func _on_PencilButton_button_up():
+	board.resumingLines()
 	pass # Replace with function body.
