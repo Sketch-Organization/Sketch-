@@ -7,6 +7,8 @@ var parent
 var Lines = []
 var eraser = false
 var currentName = 0
+var pastColor
+var pastWidth
 
 func _ready():
 	parent = get_parent().get_parent().get_parent()
@@ -61,26 +63,6 @@ remotesync func undoLineRPC():
 		Lines.pop_back()
 	pass
 
-func eraseLine():
-	currentColor = Color("#ffffff")
-	currentWidth = 10
-	pass
-	
-func createLinesAgain():
-	currentColor = Color("#000000")
-	currentWidth = 4
-	pass
-	
-func clearBoard():
-	rpc("clearBoardRPC")
-	pass
-
-remotesync func clearBoardRPC():
-	for child in get_children():
-		child.queue_free()
-		Lines.pop_back()
-	pass
-
 func setColor(newColor):
 	currentColor = newColor
 	pass
@@ -94,3 +76,25 @@ func getColor():
 	
 func getWidth():
 	return currentWidth
+
+func eraseLine():
+	pastColor = getColor()
+	pastWidth = getWidth()
+	currentColor = Color("#ffffff")
+	currentWidth = 10
+	pass
+	
+func createLinesAgain():
+	currentColor = pastColor
+	currentWidth = pastWidth
+	pass
+	
+func clearBoard():
+	rpc("clearBoardRPC")
+	pass
+
+remotesync func clearBoardRPC():
+	for child in get_children():
+		child.queue_free()
+		Lines.pop_back()
+	pass
